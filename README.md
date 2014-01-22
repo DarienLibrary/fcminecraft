@@ -1,1 +1,3 @@
-=Website for fcminecraft.org=
+*Website for fcminecraft.org*
+
+Uses Jekyll and Bootstrap
