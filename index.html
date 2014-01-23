@@ -1,13 +1,23 @@
 ---
-layout: default
-title: Your New Jekyll Site
+layout: bootstrap
+title: Fairfield County Minecraft!
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+<div class="jumbotron frontpage">
+	<div class="container">
+		<h2 style="font-family: 'Conv_Minecrafter_3', sans-serif;">
+			FAIRFIELD<br />COUNTY<br />MINECRAFT
+		</h1>
+
+		<div class="col-sm-5">
+			<p>Bringing a collaborative world to the creative young minds of Fairfield county, one library at a time.</p>
+
+			<p style="margin-top: 20px;">
+				<a class="btn btn-primary btn-large">Players</a>
+				<a class="btn btn-primary btn-large">Parents</a>
+				<a class="btn btn-primary btn-large">Libraries</a>
+		  </p>
+
+		</div>
+	</div>
 </div>

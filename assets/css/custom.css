@@ -1,0 +1,55 @@
+/*********************************************
+ * FONTS
+ *********************************************/
+
+@font-face {
+	font-family: 'Conv_Minecraftia';
+	src: local('☺'), url('../fonts/Minecraftia.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_Minecrafter_3';
+	src: local('☺'), url('../fonts/Minecrafter_3.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*********************************************
+ * DEFAULT STYLES
+ *********************************************/
+
+body {
+	color: #F0F8FF;
+	background-color: #424242;
+}
+
+/*********************************************
+ * BOOTSRTAP OVERRIDES
+ *********************************************/
+
+.frontpage {
+ 	background-image: url('../images/creeper.png');
+ 	background-position:center;
+ 	margin-top: 50px;
+ 	margin-bottom: 50px;
+ 	padding-top: 50px;
+ 	padding-bottom: 50px;
+	padding-left: 0px;
+}
+
+.frontpage h2 {
+	display: block;
+	margin: 10px 0;
+	line-height:42px;
+	color: #FAD721;
+	padding-top: 4px;
+}
+
+.frontpage .col-sm-5 {
+	padding-left: 0px;
+}
+
+
+
