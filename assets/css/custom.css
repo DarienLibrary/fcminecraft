@@ -25,15 +25,30 @@ body {
 	background-color: #424242;
 }
 
+.mainbody {
+	margin-top: 10px;
+}
+
+.mainbody h3 {
+	font-family: 'Conv_Minecrafter_3', sans-serif;
+	color: #FDC208;
+}
+
+#buttonimg {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
 /*********************************************
  * BOOTSRTAP OVERRIDES
  *********************************************/
 
 .frontpage {
- 	background-image: url('../images/creeper.png');
+ 	background-image: url('../images/15154_minecraft.jpg');
  	background-position:center;
  	margin-top: 50px;
- 	margin-bottom: 50px;
+ 	margin-bottom: 0px;
  	padding-top: 50px;
  	padding-bottom: 50px;
 	padding-left: 0px;
@@ -43,13 +58,17 @@ body {
 	display: block;
 	margin: 10px 0;
 	line-height:42px;
-	color: #FAD721;
+	color: #FF6610;
 	padding-top: 4px;
+	font-family: 'Conv_Minecrafter_3', sans-serif;
 }
 
 .frontpage .col-sm-5 {
 	padding-left: 0px;
 }
 
+.breadcrumb {
+	background-color: #424242;
+}
 
 
