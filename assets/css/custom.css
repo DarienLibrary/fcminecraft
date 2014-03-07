@@ -25,6 +25,25 @@ body {
 	background-color: #424242;
 }
 
+.ffld-map {
+	background-image: url('../images/FCMC_Map.png');
+	background-size: 300px;
+	background-repeat:no-repeat;
+	background-position:center;
+	padding: 65px 0px 115px 0px;
+	min-width: 290px;
+}
+
+.player-count {
+	padding-left: 20px;
+}
+
+.player-count h4 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #FF6610;
+}
+
 .mainbody {
 	margin-top: 10px;
 }
@@ -32,6 +51,11 @@ body {
 .mainbody h3 {
 	font-family: 'Conv_Minecrafter_3', sans-serif;
 	color: #FDC208;
+
+}
+
+.circle-thumb {
+	padding-right: 6px;
 }
 
 #buttonimg {
@@ -40,9 +64,11 @@ body {
   right: 20px;
 }
 
-/*********************************************
- * BOOTSRTAP OVERRIDES
- *********************************************/
+#buttonimg-small {
+  position: absolute;
+  top: 0px;
+  right: 35px;
+}
 
 .frontpage {
  	background-image: url('../images/15154_minecraft.jpg');
@@ -67,8 +93,44 @@ body {
 	padding-left: 0px;
 }
 
-.breadcrumb {
-	background-color: #424242;
+.playerpage {
+	background-image: url('../images/players.jpg');
 }
 
+.parentpage {
+	background-image: url('../images/parent.jpg');
+}
 
+.librarypage {
+	background-image: url('../images/library.png');
+}
+
+.sidepage {
+ 	background-position:center;
+ 	margin-top: 20px;
+ 	margin-bottom: 0px;
+ 	padding-top: 20px;
+ 	padding-bottom: 10px;
+	padding-left: 0px;
+}
+
+.sidepage h3 {
+	display: block;
+	margin: 10px 0;
+	line-height: .7;
+	color: #FF6610;
+	font-family: 'Conv_Minecrafter_3', sans-serif;
+}
+
+/*********************************************
+ * BOOTSRTAP OVERRIDES
+ *********************************************/
+
+.breadcrumb {
+	background-color: #424242;
+	margin-bottom: 0px;
+}
+
+.panel {
+	background-color: #363636;
+}

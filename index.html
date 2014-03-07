@@ -10,26 +10,60 @@ title: Fairfield County Minecraft!
 			FAIRFIELD COUNTY MINECRAFT
 		</h2>
 
-		<div class="col-sm-6">
-			<p>Bringing a collaborative world to the creative young minds of Fairfield county, one library at a time.</p>
+		<div class="col-sm-12">
+			<p>The only librarian-run, county-wide Minecraft server cooperative in the world!</p>
 
 			<p style="margin-top: 20px;">
-				<a class="btn btn-primary btn-large">Players</a> &nbsp;
-				<a class="btn btn-warning btn-large">Parents</a> &nbsp;
-				<a class="btn btn-danger btn-large">Libraries</a>
+				<a href="/players.html" class="btn btn-primary btn-large">Players</a> &nbsp;
+				<a href="/parents.html" class="btn btn-warning btn-large">Parents</a> &nbsp;
+				<a href="/libraries.html" class="btn btn-danger btn-large">Libraries</a>
 		  </p>
 		</div>
 	</div>
 </div>
 
-<div class="mainbody">
-	<div class="container">
-		<h3 style="font-family: 'Conv_Minecrafter_3', sans-serif;">About</h3>
+<div class="container mainbody">
+	<div class="row">
+		<div class="col-sm-7">
+		  <div class="pageitem">
+				<h3>What are we?</h3>
+				<img src="assets/images/town_portals.png" align="left" width="100" height="100" alt="Town Portals" class="circle-thumb img-circle">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas.
+			</div>
 
+			<div class="pageitem" style="padding-top: 10px;">
+				<h3>What's New?</h3>
+				<div>
+					{% assign first_post = site.posts.first %}
+					<div>{{ first_post.date | date: "%B %e, %Y"}}</div>
+    			<h4><a href="{{ first_post.url }}">{{ first_post.title }}</a></h4>
+  			</div>
 
-		<div class="col-sm-12">
-			<img src="assets/images/FCMC_Map.png" class="img-responsive" alt="Responsive image" align="right" width="300" height="300">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas.
+  			<div>
+    			{{ first_post.content }}
+  			</div>  		
+
+  		</div>
+
 		</div>
+
+		<div class="col-sm-5">
+
+			<div class="container-fluid player-count center-block ffld-map">
+				<div class="text-center">
+					<h4>Currently Online:</h4>
+					3 of 80 Players
+				</div>
+			</div>
+
+			<h4>Archive</h4>
+		  <ul id="posts">
+		    {% for post in site.posts %}
+		      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+		    {% endfor %}
+		  </ul>
+
+		</div>
+
 	</div>
 </div>

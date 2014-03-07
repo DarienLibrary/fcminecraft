@@ -1,0 +1,124 @@
+---
+layout: bootstrap
+title: Fairfield County Minecraft!
+---
+
+<div class="jumbotron sidepage playerpage">
+	<div class="container">
+
+		<h3>
+			FCMC PLAYERS
+		</h3>
+
+		<div class="col-sm-12">
+			<p>
+				<a href="/players.html" class="btn btn-primary btn-large active">Players</a> &nbsp;
+				<a href="/parents.html" class="btn btn-warning btn-large">Parents</a> &nbsp;
+				<a href="/libraries.html" class="btn btn-danger btn-large">Libraries</a>
+		  </p>
+		</div>
+
+	</div>
+</div>
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">Players</li>
+</ol>
+
+<div class="container mainbody">
+	<div class="row">
+		<div class="col-sm-7">
+
+		  <div class="pageitem">
+				<h3>What's New?</h3>
+				<div>
+					{% assign first_post = site.posts.first %}
+					<div>{{ first_post.date | date: "%B %e, %Y"}}</div>
+    			<h4><a href="{{ first_post.url }}">{{ first_post.title }}</a></h4>
+  			</div>
+
+  			<div>
+    			{{ first_post.content }}
+  			</div>
+
+  		</div>
+
+			<div class="pageitem" style="padding-top: 10px;">
+				<h3>How do I...?</h3>
+
+
+				<div class="panel-group" id="accordion">
+
+				  <div class="panel panel-success">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+				          Collapsible Group Item #1
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="panel panel-info">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+				          Collapsible Group Item #2
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse">
+				      <div class="panel-body">
+				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="panel panel-success">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+				          Collapsible Group Item #3
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseThree" class="panel-collapse collapse">
+				      <div class="panel-body">
+				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				      </div>
+				    </div>
+				  </div>
+
+				</div>
+
+
+  		</div>
+
+		</div>
+
+		<div class="col-sm-5">
+
+			<div class="container-fluid player-count center-block ffld-map">
+				<div class="text-center">
+					<h4>Currently Online:</h4>
+					3 of 80 Players
+				</div>
+			</div>
+
+			<h4>Archive</h4>
+		  <ul id="posts">
+		    {% for post in site.posts %}
+		      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+		    {% endfor %}
+		  </ul>
+
+		</div>
+
+	</div>
+</div>
