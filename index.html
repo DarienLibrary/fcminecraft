@@ -11,7 +11,7 @@ title: Fairfield County Minecraft!
 		</h2>
 
 		<div class="col-sm-12">
-			<p>The only librarian-run, county-wide Minecraft server cooperative in the world!</p>
+			<p>The #1 librarian-run, county-wide Minecraft server cooperative in the world!</p>
 
 			<p style="margin-top: 20px;">
 				<a href="/players.html" class="btn btn-primary btn-large">Players</a> &nbsp;
@@ -28,20 +28,40 @@ title: Fairfield County Minecraft!
 		  <div class="pageitem">
 				<h3>What are we?</h3>
 				<img src="assets/images/town_portals.png" align="left" width="100" height="100" alt="Town Portals" class="circle-thumb img-circle">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eveniet, suscipit, dicta, in aspernatur unde aliquid fugit fuga voluptatem asperiores alias eos numquam consequatur tenetur facere accusamus ad ea voluptas.
+				<h4>Welcome Minecrafters!</h4>
+				<p>
+					Fairfield County Minecraft is a <a href="https://minecraft.net/">Minecraft</a> server cooperative run by participating libraries throughout Fairfield County, Connecticut. The server is hosted and managed by <a href="http://www.darienlibrary.org/">Darien Library</a>.  The purpose of this server cooperative is to provide a safe, enjoyable, and community-focused environment for Minecraft players (between the ages of 8 and 18) throughout the county to gather, build, collaborate, and sometimes be blown up by creepers.  If you live in a participating town, all you need is a Minecraft account and a library card to <a href="/players.html">get started</a>.
+				</p>
+				<h4>What kind of server is it?</h4>
+				<p>
+					It's the fun kind!  Actually, you're probably asking, "Is it creative or survival?". Right now it is all survival maps because we want you to be challenged a little. However, we definitely have plans on making a creative world where you can build to your heart's content.  We're always adding new stuff too. We have mini games, parkour, survival games, and much more is planned.  There is one world where players can build cooperatively, no matter what town they are from, but in addition to that, every town has its own world where only residents of that town can build. You can go visit all the other towns' worlds if you like, however, and players often do.  For the brave or foolhardy, the Nether awaits where PvP is allowed.  And if your fellow Minecrafters don't get you, the lava and withers just might. 
+				</p>
+				<h4>Which libraries are participating?</h4>
+				<p>
+					We intend WORLD DOMINATION! Just kidding, but we would love it if every town in Fairfield County participated.  We're not quite there yet.  As of now, if you live in one of these towns, you're in luck: <a href="http://www.brookfieldlibrary.org/">Brookfield</a>, <a href="http://www.darienlibrary.org/">Darien</a>, <a href="http://newcanaanlibrary.org/">New Canaan</a>, <a href="http://www.newfairfieldlibrary.org/">New Fairfield</a>, <a href="http://www.chboothlibrary.org/">Newtown</a>, <a href="http://www.norwalklib.org/">Norwalk</a>, <a href="http://www.westonpubliclibrary.org/">Weston</a>, <a href="http://westportlibrary.org/">Westport</a>, <a href="http://www.wiltonlibrary.org/">Wilton</a>.
+				</p>
+				<p>
+					If your town is not on that list, there is still hope! Visit your local library and tell them about us.  It's super easy to join and be a part of the awesomeness.  We even have a <a href="/libraries.html">page on this website</a> that can help your hometown library figure out how to join (SPOILER: it's totally easy).
+				</p>
+				<h4>If I have questions, who should I ask?</h4>
+				<p>
+					You you live in a town whose library participates, feel free to call on your local library and they can probably answer most questions.  Otherwise, <a href="mailto:jblyberg@darienlibrary.org">John Blyberg</a>, the server admin at Darien Library, is always happy to help.
+				</p>
 			</div>
 
 			<div class="pageitem" style="padding-top: 10px;">
 				<h3>What's New?</h3>
+				
+				{% for post in site.categories.news limit: 1 %}
 				<div>
-					{% assign first_post = site.posts.first %}
-					<div>{{ first_post.date | date: "%B %e, %Y"}}</div>
-    			<h4><a href="{{ first_post.url }}">{{ first_post.title }}</a></h4>
+					<div>{{ post.date | date: "%B %e, %Y"}}</div>
+    			<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
   			</div>
 
   			<div>
-    			{{ first_post.content }}
-  			</div>  		
+    			{{ post.content }}
+  			</div>
+  			{% endfor %}  		
 
   		</div>
 
@@ -52,11 +72,32 @@ title: Fairfield County Minecraft!
 			<div class="container-fluid player-count center-block ffld-map">
 				<div class="text-center">
 					<h4>Currently Online:</h4>
-					3 of 80 Players
+					<span id="num_players"></span>
+					<script>
+						(function() {
+  						var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_count";
+  						$.getJSON( mcAPI, function(data) {
+  							var output = data.num_players + " of " + data.max_players + " Players";
+  							$('#num_players').html(output);
+  						});
+						})();
+					</script>
 				</div>
 			</div>
 
-			<h4>Archive</h4>
+			<span class="pageitem"><h4>Who's on?</h4></span>
+			<span id="player_list"></span>
+			<script>
+				(function() {
+					var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_list";
+					$.getJSON( mcAPI, function(data) {
+						var output = data.txtlist;
+						$('#player_list').html(output);
+					});
+				})();
+			</script>
+
+			<span class="pageitem"><h4>Archive</h4></span>
 		  <ul id="posts">
 		    {% for post in site.posts %}
 		      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>

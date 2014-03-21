@@ -1,2 +1,4 @@
 _site/
 .DS_Store
+dsn.php
+sftp-config.json

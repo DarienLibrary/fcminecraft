@@ -32,15 +32,17 @@ title: Fairfield County Minecraft!
 
 		  <div class="pageitem">
 				<h3>What's New?</h3>
+
+				{% for post in site.categories.players limit: 1 %}
 				<div>
-					{% assign first_post = site.posts.first %}
-					<div>{{ first_post.date | date: "%B %e, %Y"}}</div>
-    			<h4><a href="{{ first_post.url }}">{{ first_post.title }}</a></h4>
+					<div>{{ post.date | date: "%B %e, %Y"}}</div>
+    			<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
   			</div>
 
   			<div>
-    			{{ first_post.content }}
+    			{{ post.content }}
   			</div>
+  			{% endfor %}
 
   		</div>
 
@@ -75,7 +77,15 @@ title: Fairfield County Minecraft!
 				    </div>
 				    <div id="collapseTwo" class="panel-collapse collapse">
 				      <div class="panel-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				      	<p>
+				      		FCMC uses the "Grief Prevention" plugin to allow you to protect your build area.  In order to use it, you will need a golden shovel--which we will provide for you! You can easily get one while in the game by typing: <code>/kit claiming</code>.  You can do this once per day.
+								</p>
+								<p>
+				      		This is a great tutorial on how to use Grief Prevention:
+				      	</p>
+				        <p style="text-align: center;">
+				        	<iframe width="480" height="270" src="//www.youtube.com/embed/VDsjXB-BaE0" frameborder="0" allowfullscreen></iframe>
+				        </p>
 				      </div>
 				    </div>
 				  </div>
@@ -107,13 +117,34 @@ title: Fairfield County Minecraft!
 			<div class="container-fluid player-count center-block ffld-map">
 				<div class="text-center">
 					<h4>Currently Online:</h4>
-					3 of 80 Players
+					<span id="num_players"></span>
+					<script>
+						(function() {
+  						var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_count";
+  						$.getJSON( mcAPI, function(data) {
+  							var output = data.num_players + " of " + data.max_players + " Players";
+  							$('#num_players').html(output);
+  						});
+						})();
+					</script>
 				</div>
 			</div>
 
-			<h4>Archive</h4>
+			<span class="pageitem"><h4>Who's on?</h4></span>
+			<span id="player_list"></span>
+			<script>
+				(function() {
+					var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_list";
+					$.getJSON( mcAPI, function(data) {
+						var output = data.txtlist;
+						$('#player_list').html(output);
+					});
+				})();
+			</script>
+
+			<span class="pageitem"><h4>Archive</h4></span>
 		  <ul id="posts">
-		    {% for post in site.posts %}
+		    {% for post in site.categories.players %}
 		      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
 		    {% endfor %}
 		  </ul>
