@@ -53,13 +53,13 @@ title: Fairfield County Minecraft!
 				<h3>What's New?</h3>
 				
 				{% for post in site.categories.news limit: 1 %}
-				<div>
-					<div>{{ post.date | date: "%B %e, %Y"}}</div>
+				<div class="postbody">
+					<p class="postdate_brief">{{ post.date | date: "%B %e, %Y"}}</p>
     			<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
   			</div>
 
   			<div>
-    			{{ post.content }}
+    			{{ post.excerpt }} ... <span class="readmore">(<a href="{{ post.url }}">read more</a>)</span>
   			</div>
   			{% endfor %}  		
 
