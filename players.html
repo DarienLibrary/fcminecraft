@@ -34,8 +34,8 @@ title: Fairfield County Minecraft!
 				<h3>What's New?</h3>
 
 				{% for post in site.categories.players limit: 1 %}
-				<div>
-					<div>{{ post.date | date: "%B %e, %Y"}}</div>
+				<div class="postbody">
+					<p class="postdate_brief">{{ post.date | date: "%B %e, %Y"}}</p>
     			<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
   			</div>
 
@@ -220,7 +220,7 @@ title: Fairfield County Minecraft!
 			<div class="container-fluid player-count center-block ffld-map">
 				<div class="text-center">
 					<h4>Currently Online:</h4>
-					<span id="num_players"></span>
+					<span id="num_players"><img src="assets/images/loader.gif"></span>
 					<script>
 						(function() {
   						var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_count";
@@ -265,7 +265,7 @@ title: Fairfield County Minecraft!
 
 		  <div class="staffblock">
 
-		  	<span class="staffrank">Admins</span>
+		  	<span class="staffrank">Admin</span>
 		  	<div class="row staffrow">
 		  		<div class="col-xs-4 col-sm-4" style="text-align:center;">
 		  			<div><img height="45" src="http://fcminecraft.org/api/3d.php?login=jblyberg"></div>

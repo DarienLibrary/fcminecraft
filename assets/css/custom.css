@@ -158,6 +158,32 @@ body {
 	font-family: 'Conv_Minecrafter_3', sans-serif;
 }
 
+.postfloat {
+	float: right;
+}
+
+.postfloat a {
+	color: #FF6610;
+}
+
+.postdate {
+	margin-top: 30px;
+	margin-bottom: 0px;
+	color: #FF6610;
+}
+
+.postdate_brief {
+	margin-bottom: 0px;
+	color: #FF6610;
+}
+
+.postbody h2, .postbody h4 {
+	margin-top: 0px;
+	padding-top: 0px;
+	font-family: 'Conv_Minecraftia';
+	color: #3BB662;
+}
+
 .foot-hr {
 	margin-top: 20px;
 	margin-bottom: 5px;
