@@ -41,7 +41,7 @@ title: Fairfield County Minecraft!
 					We intend WORLD DOMINATION! Just kidding, but we would love it if every town in Fairfield County participated.  We're not quite there yet.  As of now, if you live in one of these towns, you're in luck: <a href="http://www.brookfieldlibrary.org/">Brookfield</a>, <a href="http://www.darienlibrary.org/">Darien</a>, <a href="http://newcanaanlibrary.org/">New Canaan</a>, <a href="http://www.newfairfieldlibrary.org/">New Fairfield</a>, <a href="http://www.chboothlibrary.org/">Newtown</a>, <a href="http://www.norwalklib.org/">Norwalk</a>, <a href="http://www.westonpubliclibrary.org/">Weston</a>, <a href="http://westportlibrary.org/">Westport</a>, <a href="http://www.wiltonlibrary.org/">Wilton</a>.
 				</p>
 				<p>
-					If your town is not on that list, there is still hope! Visit your local library and tell them about us.  It's super easy to join and be a part of the awesomeness.  We even have a <a href="/libraries.html">page on this website</a> that can help your hometown library figure out how to join (SPOILER: it's totally easy).
+					If your town is not on that list, there is still hope! Visit your local library and tell them about us.  It's super easy to join and be a part of the awesomeness.  We even have a <a href="/libraries.html">page on this website</a> that can help your hometown library figure out how to participate (SPOILER: it's totally easy).
 				</p>
 				<h4>If I have questions, who should I ask?</h4>
 				<p>
@@ -86,12 +86,12 @@ title: Fairfield County Minecraft!
 			</div>
 
 			<span class="pageitem"><h4>Who's on?</h4></span>
-			<span id="player_list"></span>
+			<span id="player_list"><img src="assets/images/loader.gif"></span>
 			<script>
 				(function() {
 					var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_list";
 					$.getJSON( mcAPI, function(data) {
-						var output = data.txtlist;
+						var output = data.htmllist;
 						$('#player_list').html(output);
 					});
 				})();

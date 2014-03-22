@@ -44,6 +44,38 @@ body {
 	color: #FF6610;
 }
 
+.player_name {
+	font-family: courier, "courier new";
+	color: #11AC62;
+}
+
+#num_players {
+	font-family: courier, "courier new";
+}
+
+.ruleslist {
+	padding-left: 25px;
+	color: #DFAC52;
+}
+
+.staffblock {
+	margin-left: 10px;
+}
+
+.staffrow {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.staffrank {
+	color: #FDC208;
+}
+
+.staffname {
+	font-family: courier, "courier new";
+	color: #11AC62;
+}
+
 .pageitem h4 {
 	color: #FF6610;
 }

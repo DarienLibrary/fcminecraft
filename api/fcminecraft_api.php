@@ -30,5 +30,9 @@ function player_list($mc_api) {
 	sort($player_list);
 	$players['list'] = $player_list;
 	$players['txtlist'] = count($players['list']) ? implode($player_list, ', ') : 'No players online, currently.';
+	foreach ($player_list as $player) {
+		$player_html[] = '<span class="player_name">' . $player . '</span>';
+	}
+	$players['htmllist'] = count($players['list']) ? implode($player_html, '<span class="player_comma">,</span> ') : '<span class="player_name">No players online, currently.</span>';
 	return json_encode($players);
 }
