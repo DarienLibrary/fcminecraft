@@ -15,13 +15,93 @@ title: Fairfield County Minecraft!
 				<a href="/players.html" class="btn btn-primary btn-large">Players</a> &nbsp;
 				<a href="/parents.html" class="btn btn-warning btn-large active">Parents</a> &nbsp;
 				<a href="/libraries.html" class="btn btn-danger btn-large">Libraries</a>
-		  </p>
+			</p>
 		</div>
 
 	</div>
 </div>
 
 <ol class="breadcrumb">
-  <li><a href="/">Home</a></li>
-  <li class="active">Parents</li>
+	<li><a href="/">Home</a></li>
+	<li class="active">Parents</li>
 </ol>
+
+<div class="container mainbody">
+	<div class="row">
+		<div class="col-sm-6">
+
+			<div class="pageitem">
+				<h3>FCMC Safety</h3>
+				<p>
+					<span class="pageitem"><h4>Libraries and Your Child</h4>
+					As librarians, we take the online safety of your children very seriously.  We recognize that it's virtually impossible to keep up with what kids are doing when they pick up a tablet or phone, or when they sit down in front of a computer. We're information professionals--we can help you make sense of this convoluted, ever-changing world. We also see a lot of kids every day in a setting that is not home and not school. The library is often the place where kids go after school to hang out and unwind. Usually, they are fooling around on a computer while chatting with their friends. We'll often see groups of teens huddled around one screen, working together to build something, or just poking around online.  It's our job to know the landscapes they are engaged in and help provide positive guidance as they navigate their way through it.
+				</p>
+				<p>
+					<span class="pageitem"><h4>Minecraft at Libraries?</h4>
+					The Fairfield County Minecraft story began a few years ago at <a href="http://www.darienlibrary.org/">Darien Library</a>. We had heard distant rumblings about a game called Minecraft and slowly, kids began drifting in, asking if it was installed on our computers.  It was not, so naturally we installed it for them after determining that it was an appropriate game.  Prety soon, we realized that kids were logging on to remote servers to build collaboratively with others around the world and we asked, "Would you like the library to run a Minecraft server?" They practically fell out of their seats with a resounding, "YES!"  The Minecraft phenominon had hit, so down the rabbit hole we went.
+				</p>
+				<p>
+					<span class="pageitem"><h4>Fairfield County Minecraft Server</h4>
+					That first server is no longer around, but we learned a lot from it.  We learned that a public Minecraft server can not always be a safe place. We learned many technical lessons on how to keep a Minecraft server running smoothly. We learned how to control and manage bad behavior. But ultimately, we took it down because it was open to the public and it fell victim to what one might call "the tragedy of the commons". Meanwhile, we were approached by other libraries in the area asking how we went about running a Minecraft server and the idea was born for a cooperative approach to running a whitelist server.  Whitelisting means that we selectively allow access to the server.  The result is that we no longer have random players from all over the world joining (and possibly defacing) the server and we know exactly who each player is, who their caregivers are, and how to get in contact with them. By adding this important level of accountability, we've been able to create a multiverse of Minecraft worlds that are fun, friendly, and safe.
+				</p>
+				<p>
+					<span class="pageitem"><h4>How it works</h4>
+					In order for your chilf to play on the server, you need to be a resident in a participating town: <a href="http://www.brookfieldlibrary.org/">Brookfield</a>, <a href="http://www.darienlibrary.org/">Darien</a>, <a href="http://newcanaanlibrary.org/">New Canaan</a>, <a href="http://www.newfairfieldlibrary.org/">New Fairfield</a>, <a href="http://www.chboothlibrary.org/">Newtown</a>, <a href="http://www.norwalklib.org/">Norwalk</a>, <a href="http://www.westonpubliclibrary.org/">Weston</a>, <a href="http://westportlibrary.org/">Westport</a>, <a href="http://www.wiltonlibrary.org/">Wilton</a>.  We understand that it may be frustrating if your town is not yet represented, but we really do make it very easy for libraries to become members of this cooperative project and we encourage you to speak with your library about joining if they have not already.  Feel free to point them to this website for more information.
+				</p>
+				<p>
+					If you are a resident of a participating town, simply bring your child to the library and ask to join. Your child must have a Minecraft account and a valid library card, but since you'll already be at the library, that will be no problem.  We do not prevent any child from joining if they have late fees. The librarian will add your child to the server's whitelist and a shared spreadsheet (that only librarians see) containing player names, library card numbers, and birthdates.  This is so that we can keep track of who players are in real life. At this point, your child is free to connect to the server! Instructions on how to do that can be found on the <a href="/players.html">Players page</a>. When a player turns 18, they are taken off the whitelist.
+				</p>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+
+			<div class="pageitem">
+				<h3>What's New?</h3>
+
+				{% for post in site.categories.players limit: 1 %}
+				<div class="postbody">
+					<p class="postdate_brief">{{ post.date | date: "%B %e, %Y"}}</p>
+					<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+				</div>
+
+				<div>
+					{{ post.excerpt }} ... <span class="readmore">(<a href="{{ post.url }}">read more</a>)</span>
+				</div>
+				{% endfor %}
+			</div>
+
+			<span class="pageitem"><h4>Archive</h4></span>
+		  <ul id="posts">
+		    {% for post in site.categories.players %}
+		      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+		    {% endfor %}
+		  </ul>
+
+		  <div class="pageitem">
+		  	<br />
+				<h3>Contact Us</h3>
+				<p>
+					If your library participates in FCMC and you have a question, comment, or concern, your best bet is to contact your library directly.  Otherwise, you may email <a href="mailto:jblyberg@darienlibrary.org">John Blyberg</a> at <a href="http://www.darienlibrary.org">Darien Library</a> who is the person responsible for maintaining the server.
+				</p>
+			</div>
+
+			<div class="pageitem">
+		  	<br />
+				<h3>Resources</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, delectus, sapiente, ipsa voluptas qui vitae quam aliquam illo sunt non voluptates id alias neque. At cupiditate dolores sunt reprehenderit voluptate.
+				</p>
+				<div class="resblock">
+					<dl class="dl-horizontal">
+						<dt class="restype">Article</dt>
+						<dd><a href="http://www.forbes.com/sites/willburns/2012/12/20/minecraft-as-mind-craft/">Minecraft as Mind Craft</a></dd>
+						<dt>Web Site</dt>
+						<dd><a href="http://www.pewinternet.org/">Pew Research Internet Project</a></dd>
+					</dl>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

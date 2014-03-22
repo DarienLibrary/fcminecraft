@@ -58,7 +58,11 @@ body {
 	color: #DFAC52;
 }
 
-.staffblock {
+.resblock dt {
+	color: #FF6610;
+}
+
+.staffblock, .resblock {
 	margin-left: 10px;
 }
 
