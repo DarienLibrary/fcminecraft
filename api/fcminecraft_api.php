@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 require_once('dsn.php');
 require_once('JSONAPI.php');
 
-$mc_api = new JSONAPI($host, $port, $uname, $pword);
+$mc_api = new JSONAPI($host, $port, $uname, $pword, $salt);
 
 switch ($_GET['callback']) {
 	case 'player_count':
