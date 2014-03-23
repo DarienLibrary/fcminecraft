@@ -1,10 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-require_once('dsn.php');
-require_once('JSONAPI.php');
-
-$mc_api = new JSONAPI($host, $port, $uname, $pword, $salt);
+require_once('MDB2.php');
 
 switch ($_GET['callback']) {
 	case 'player_count':
@@ -18,21 +15,62 @@ switch ($_GET['callback']) {
 /* Mentod functions */
 
 function player_count($mc_api) {
-	$count_arr_raw = $mc_api->callMultiple(array("getPlayerLimit", "getPlayerCount"), array(array(), array(), ));
-	$count_arr['max_players'] = $count_arr_raw[0]['success'];
-	$count_arr['num_players'] = $count_arr_raw[1]['success'];
+	$server_properties = get_config();
+	$player_list = get_players();
+
+	$count_arr['max_players'] = $server_properties['max-players'];
+	$count_arr['num_players'] = count($player_list);
 	return json_encode($count_arr);
 }
 
 function player_list($mc_api) {
-	$player_list_raw = $mc_api->call("players.online.names");
-	$player_list = $player_list_raw[0]['success'];
+
+	$server_properties = get_config();
+	$player_list_raw = get_players();
+
+	foreach ($player_list_raw as $player_arr) {
+		$player_list[] = $player_arr['player'];
+	}
 	sort($player_list);
+	
 	$players['list'] = $player_list;
-	$players['txtlist'] = count($players['list']) ? implode($player_list, ', ') : 'No players online, currently.';
+	$players['txtlist'] = count($player_list) ? implode($player_list, ', ') : 'No players online, currently.';
 	foreach ($player_list as $player) {
 		$player_html[] = '<span class="player_name">' . $player . '</span>';
 	}
-	$players['htmllist'] = count($players['list']) ? implode($player_html, '<span class="player_comma">,</span> ') : '<span class="player_name">No players online, currently.</span>';
+	$players['htmllist'] = count($player_list) ? implode($player_html, '<span class="player_comma">,</span> ') : '<span class="player_name">No players online, currently.</span>';
+	$players['num_players'] = count($player_list);
+	$players['max_players'] = $server_properties['max-players'];
 	return json_encode($players);
 }
+
+/* Support functions */
+
+function get_players() {
+
+	require_once('dsn.php');
+
+	$mdb2 = MDB2::connect($player_db_dsn);
+	if (PEAR::isError($mdb2))
+	{
+		die($mdb2->getMessage());
+	}
+	$mdb2->setFetchMode(MDB2_FETCHMODE_ASSOC);
+
+	$sql = 'SELECT * FROM online_players WHERE online = 1';
+	$result = $mdb2->query($sql);
+
+	return $result->fetchAll();
+}
+
+function get_config() {
+	$server_ini = '/home/minecraft/minecraft/minecraft_server/server.properties';
+	$server_properties = parse_ini_file($server_ini);
+	return $server_properties;
+}
+
+
+
+
+
+

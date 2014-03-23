@@ -73,26 +73,20 @@ title: Fairfield County Minecraft!
 				<div class="text-center">
 					<h4>Currently Online:</h4>
 					<span id="num_players"><img src="assets/images/loader.gif"></span>
-					<script>
-						(function() {
-  						var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_count";
-  						$.getJSON( mcAPI, function(data) {
-  							var output = data.num_players + " of " + data.max_players + " Players";
-  							$('#num_players').html(output);
-  						});
-						})();
-					</script>
 				</div>
 			</div>
 
 			<span class="pageitem"><h4>Who's on?</h4></span>
 			<span id="player_list"><img src="assets/images/loader.gif"></span>
+			
 			<script>
 				(function() {
 					var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_list";
 					$.getJSON( mcAPI, function(data) {
-						var output = data.htmllist;
-						$('#player_list').html(output);
+						var playerlist = data.htmllist;
+						var playercount = data.num_players + " of " + data.max_players + " Players";
+						$('#player_list').html(playerlist);
+						$('#num_players').html(playercount);
 					});
 				})();
 			</script>
