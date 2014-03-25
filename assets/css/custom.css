@@ -80,6 +80,32 @@ body {
 	color: #11AC62;
 }
 
+.postfloat {
+	float: right;
+}
+
+.postfloat a {
+	color: #FF6610;
+}
+
+.postdate {
+	margin-top: 30px;
+	margin-bottom: 0px;
+	color: #FF6610;
+}
+
+.postdate_brief {
+	margin-bottom: 0px;
+	color: #FF6610;
+}
+
+.postbody h2 {
+	margin-top: 0px;
+	padding-top: 0px;
+	font-family: 'Conv_Minecraftia';
+	color: #3BB662;
+}
+
 .pageitem h4 {
 	color: #FF6610;
 }
@@ -162,30 +188,9 @@ body {
 	font-family: 'Conv_Minecrafter_3', sans-serif;
 }
 
-.postfloat {
-	float: right;
-}
-
-.postfloat a {
-	color: #FF6610;
-}
-
-.postdate {
-	margin-top: 30px;
-	margin-bottom: 0px;
-	color: #FF6610;
-}
-
-.postdate_brief {
-	margin-bottom: 0px;
-	color: #FF6610;
-}
-
-.postbody h2, .postbody h4 {
-	margin-top: 0px;
-	padding-top: 0px;
-	font-family: 'Conv_Minecraftia';
-	color: #3BB662;
+.infopage h2 {
+	margin-top: 35px;
+	margin-bottom: 20px;
 }
 
 .foot-hr {
