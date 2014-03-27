@@ -4,7 +4,146 @@ title:  "FCMC Server Information"
 ---
 
 <p>
-	This page will serve as a living document detailing the current setup and configuration of the Farifield County Minecraft server.  We will do our best to keep this document updated as changes are implemented.  If you are using this page as a guide for implementing a Minecraft server in your library, please be aware that this is not a step-by-step howto for setting up and maintaining a server, rather, an explanation of what we are doing.  Hopefully this page will give you ideas and spark your imagination.  Every server is different and has its own personality.  You should 
+	This page will serve as a living document detailing the current setup and configuration of the Fairfield County Minecraft server.  We will do our best to keep this document updated as changes are implemented.  If you are using this page as a guide for implementing a Minecraft server in your library, please be aware that this is not a step-by-step HOWTO for setting up and maintaining a server, rather, basic documentation of what we are doing.  Hopefully this page will give you ideas and spark your imagination.  Every server is different and has its own personality.  You should do some thinking about the type of server you want to run. Once you have a general sense of what you want to accomplish, then you can start building and hunting for the appropriate plugins (provided you are running a Bukkit server).
+</p>
+<p>
+	Take it slow, one step at a time, and you will not get overwhelmed.  There is a lot involved with running a Minecraft server and the most successful ones are those where the staff is engaged, active, and constantly improving.  Focus on quality of your server over quantity of plugins. Be patient, fastidious, and embrace your OCD.
 </p>
 
-<h4>This is a test</h4>
+<div class="row">
+	<div class="col-sm-6">
+
+		<h4>Server Hosting</h4>
+		<p>
+			Minecraft servers are typically very resource-intensive.  What you will need depends on how large your server is, number of worlds, number of players, and number and type of plugins installed. It will gobble up as much memory as you feed it, however that may not necessarily mean that it needs as much memory as you're allocating.
+		</p>
+		<p>
+			The FCMC server is a virtual server hosted at Darien Library's datacenter.  The datacenter is running VMWare ESXi 5.1.  Minecraft servers can be run on Windows, Mac, or Linux. We chose Ubuntu Linux for its stability, reliability, and flexibility.  To get a sense of what we are allocating for FCMC:
+		</p>
+		<img src="assets/images/vmware_panel.png" class="img-responsive" alt="Responsive image"><br />
+		<p>
+			In addition to thinking about memory and CPU capacity, you'll want to think about disk storage for both the live server as well as backups.  FCMC is backed-up nightly to a SAN device.  Because map files can grow quite large, we have allocated 1TB of disk space to the entire operation.  We maintain a full month's worth of backup, however, so it is not necessary for every environment to allocate resources at the same level, depending on your backup strategy.
+		</p>
+
+		<h4>Server Software</h4>
+		<p>
+			When we initially started out, FCMC was running <a href="https://dl.bukkit.org/">Craftbukkit</a>.  Craftbukit is a fork of the <a href="https://minecraft.net/download">vanilla Minecraft server</a>--the official server software provided by Mojang.  The vanilla server is fine for quickly putting up an environment for players to build cooperative, but Craftbukkit added major extensibility to the server, allowing developers to create plugins that can dramatically alter the gameplay experience.
+		</p>
+		<p>
+			After running Crafbukkit for awhile, we decided to switch to <a href="http://www.spigotmc.org/">SpigotMC</a>, a fork of Craftbukkit (essentially, a fork of a fork). Spigot focuses on streamlining the server code to make it faster and more efficient, but is otherwise completely compatible with existing bukkit plugins.
+		</p>
+		<p>
+			We are also using the <a href="https://github.com/mcdevs/mark2">Mark2</a> server wrapper. Mark2 is a great tool for launching and controlling the actual SpigotMC software.  It allows admins to control the server from the command line, which is very useful for a variety of administrative tasks like nightly backups and relaunching via crontab.
+		</p>
+
+		<h4>Custom Software</h4>
+		<p>
+			As the FCMC server evolved, we've had to create some custom software and tailor-made scripts for its maintenance.  Some of these scripts are used to provide real-time data to external applications (such as this web site) and some are used on the server to facilitate log rotation, backups, etc.  We will be looking at all those resources and will make them all available on the <a href="https://github.com/DarienLibrary/fcminecraft">FCMC Github repository</a>.
+		</p>
+
+	</div>
+
+	<div class="col-sm-6">
+
+		<h4>Plugins</h4>
+		
+		<p>
+			Craftbukkit allows administrators to install plugins that can add fun, exciting, and sometimes useful features to the server.  There are <a href="http://plugins.bukkit.org/">thousands of plugins</a> to choose from, however, finding the right ones for your environment will take quite a bit of time and research.  Again, it really helps to know what kind of server you want to run because you'll be tempted to install a whole bunch of plugins that may provide little value while de-stabilizing your server.
+		</p>
+		<p>
+			The most important thing to remember is that if you install a plugin, you're going to have to support it.  That means that when a major update comes out o Minecraft, you'll want to be reasonably sure that it will continue to work. If not, you'll want to know that the plugin is actively maintained and will be updated soon.  One of the most tedious tasks of running a minecraft server is keeping everything up-to-date and the more plugins you have, the more you'll have to keep track of.
+		</p>
+
+		<h4>Plugin List</h4>
+		<p>
+			If you're curious about the plugins running on FCMC, we maintain a list here.  During your research, you'll discover that some plugins are ubiquitous, such as the essential "Essentials" plugin.  Others address verey specific and unique needs.  This list is provided for your information only and should not be considered to be an endorsement of these particular plugins.
+		</p>
+
+		<dl class="dl-horizontal">
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/bar-api/">BarAPI</a></dt>
+		  <dd>Software library for modifying the Boss health bar</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/bossmessage/">BossMessage</a></dt>
+		  <dd>Allows notices to scroll through on the top of the screen using the Boss health bar</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/cleanroomgenerator/">CleanroomGenerator</a></dt>
+		  <dd>Custom Chunk Generator to create customizable flat clean room style worlds</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/consolesay/">ConsoleSay</a></dt>
+		  <dd>Changes the format of the console /say command</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/coreprotect/">CoreProtect</a></dt>
+		  <dd>Fast, efficient block logging, rollbacks, and restores</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/dynamic-effect-whitelist/">DynamicEffectWhitelist</a></dt>
+		  <dd>Whitelist using MySQL/HTTP/File</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/essentials/">Essentials</a></dt>
+		  <dd>Essentials offers over 100 commands and features useful on just about every server</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/grief-prevention/">GriefPrevention</a></dt>
+		  <dd>Prevents all forms of grief, including build/break, theft, spam, fire, spawn camping, lava, and treetops, so you don't have to rollback</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/healthbar/">HealthBar</a></dt>
+		  <dd>Adds a health bar above players heads</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/lockette/">Lockette</a></dt>
+		  <dd>A sign-based container and door lock</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/multiverse-core/">Multiverse-Core</a></dt>
+		  <dd>Complete multi-world management</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/multiverse-netherportals/">Multiverse-NetherPortals</a></dt>
+		  <dd>Allows nether portals built in a world go to a specific world (used for shared Nether)</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/online-players-sql/">OnlinePlayersSQL</a></dt>
+		  <dd>Updates a MySQL database table with a list of players as they join and disconnect</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/permissionsex/">PermissionsEx</a></dt>
+		  <dd>Full-featured permissions subsystem</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/playervaults/">PlayerVaults</a></dt>
+		  <dd>Allows persistent per-player item vaults</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/protocollib/">ProtocolLib</a></dt>
+		  <dd>An abstraction layer for network protocols like TCP</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/pvptoggle/">PvPToggle</a></dt>
+		  <dd>Allows players to decide whether or not they want PvP to be enabled or disabled</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/pwnfilter/">PwnFilter</a></dt>
+		  <dd>Filter bad language from chat, sign placement, and player commands</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/serversigns/">ServerSigns</a></dt>
+		  <dd>Lets you add messages, player commands and server commands to configured blocks or signs</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/stables/">Stables</a></dt>
+		  <dd>Assists with Horse ownership, protection, and other horse related things</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/survival-games/">SurvivalGames</a></dt>
+		  <dd>Creates a fully automated hunger games style experience</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/timelock/">TimeLock</a></dt>
+		  <dd>Allows you to freeze the time on any world, so that the world will permanently stay at the time of your choice</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/vault/">Vault</a></dt>
+		  <dd>A Permissions, Chat, and Economy API</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/voxelsniper/">VoxelSniper</a></dt>
+		  <dd>The premier long range map editing tool for Minecraft SMP</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/worldborder/">WorldBorder</a></dt>
+		  <dd>Provides a border for each of your worlds, which only people granted special bypass access are allowed beyond</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/worldedit/">WorldEdit</a></dt>
+		  <dd>An easy-to-use in-game world editor for Minecraft, supporting both single player and multiplayer</dd>
+
+		  <dt><a href="http://dev.bukkit.org/bukkit-plugins/worldguard/">WorldGuard</a></dt>
+		  <dd>A powerful plugin that protects your servers from various problems</dd>
+
+		</dl>
+
+	</div>
+</div>
+
