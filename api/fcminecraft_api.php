@@ -5,27 +5,25 @@ require_once('MDB2.php');
 
 switch ($_GET['callback']) {
 	case 'player_count':
-		print player_count($mc_api);
+		print player_count();
 		break;
 	case 'player_list':
-		print player_list($mc_api);
+		print player_list();
 		break;
 }
 
 /* Mentod functions */
 
-function player_count($mc_api) {
-	$server_properties = get_config();
+function player_count() {
 	$player_list = get_players();
 
-	$count_arr['max_players'] = $server_properties['max-players'];
+	$count_arr['max_players'] = get_max_players();
 	$count_arr['num_players'] = count($player_list);
 	return json_encode($count_arr);
 }
 
-function player_list($mc_api) {
+function player_list() {
 
-	$server_properties = get_config();
 	$player_list_raw = get_players();
 
 	foreach ($player_list_raw as $player_arr) {
@@ -40,7 +38,7 @@ function player_list($mc_api) {
 	}
 	$players['htmllist'] = count($player_list) ? implode($player_html, '<span class="player_comma">,</span> ') : '<span class="player_name">No players online, currently.</span>';
 	$players['num_players'] = count($player_list);
-	$players['max_players'] = $server_properties['max-players'];
+	$players['max_players'] = get_max_players();
 	return json_encode($players);
 }
 
@@ -63,10 +61,10 @@ function get_players() {
 	return $result->fetchAll();
 }
 
-function get_config() {
-	$server_ini = '/home/minecraft/minecraft/minecraft_server/server.properties';
-	$server_properties = parse_ini_file($server_ini);
-	return $server_properties;
+function get_max_players() {
+	$server_ini = trim(`grep max-players /home/minecraft/minecraft/minecraft_server/server.properties`);
+	$max_pl_arr = explode('=', $server_ini);
+	return trim($max_pl_arr[1]);
 }
 
 
