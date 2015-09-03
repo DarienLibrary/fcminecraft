@@ -233,7 +233,7 @@ title: Fairfield County Minecraft!
 					var mcAPI = "http://fcminecraft.org/api/fcminecraft_api.php?callback=player_list";
 					$.getJSON( mcAPI, function(data) {
 						var playerlist = data.htmllist;
-						var playercount = data.num_players + " of " + data.max_players + " Players";
+						var playercount = data.num_players + " of " + data.registered_players + " Players";
 						$('#player_list').html(playerlist);
 						$('#num_players').html(playercount);
 					});

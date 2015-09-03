@@ -19,6 +19,7 @@ function player_count() {
 
 	$count_arr['max_players'] = get_max_players();
 	$count_arr['num_players'] = count($player_list);
+	$count_arr['num_registered'] = trim(`ls -1 /home/minecraft/minecraft/minecraft_server/plugins/Essentials/userdata | wc -l`);
 	return json_encode($count_arr);
 }
 
@@ -39,6 +40,7 @@ function player_list() {
 	$players['htmllist'] = count($player_list) ? implode($player_html, '<span class="player_comma">,</span> ') : '<span class="player_name">No players online, currently.</span>';
 	$players['num_players'] = count($player_list);
 	$players['max_players'] = get_max_players();
+	$players['registered_players'] = trim(`ls -1 /home/minecraft/minecraft/minecraft_server/plugins/Essentials/userdata | wc -l`);
 	return json_encode($players);
 }
 
