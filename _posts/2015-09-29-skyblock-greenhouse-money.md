@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Skyblock, Greenhouses, and Money!"
+title:  "Skyblock, Greenhouses, Shops and Money!"
 date:   2015-09-29 12:00:00
 categories: news players parents libraries
 ---
@@ -19,9 +19,6 @@ Finally, money money money!
 
 Now you can use money in the game, which means you can actually set up shops and buy or sell items directly with each other. Here's a few tutorials to get started:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QtEE_f410x0" frameborder="0" allowfullscreen></iframe>
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kOpeIYLEQV4" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/orbRDJbxhgM" frameborder="0" allowfullscreen></iframe>
 
 Have fun miners!
